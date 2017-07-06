@@ -23,12 +23,23 @@ class Fanfaron {
 		$this->droits = isset($infos['droits']) ? $infos['droits'] : Droits::Standard;
 	}
 	
-	public static function getFanfaron($crits = array()) {
+	public static function getFanfarons($crits = array()) {
 		$fanfarons = Sql::getSql()->select('Fanfarons', array('*'), $crits);
 		if (count($fanfarons) == 0)
 			return false;
-		else if (count($fanfarons) == 1) 
-			return new Fanfaron($fanfarons[0]);
+
+		$ret = array();
+		foreach ($fanfarons as $f)
+			$ret[] = new Fanfaron($f);
+		return $ret;
+	}
+	
+	public static function getFanfaron($crits = array()) {
+		$fanfarons = getFanfarons($crits);
+		if ($fanfarons == false)
+			return false;
+		else if (count($fanfarons) == 1)
+			return $fanfarons[0];
 		throw new Exception("La requête a retournée plusieurs résultats.");
 	}
 	
