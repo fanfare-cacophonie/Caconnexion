@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['SM_sso_user'])) {
-	echo "T'es déjà connecté.";
+	echo "T'es dÃ©jÃ  connectÃ©.";
 	die;
 }
 
@@ -19,7 +19,7 @@ else {
 	$fanfaron = Fanfaron::getFanfaron(array('surnom' => $_POST['surnom']));
 	if ($fanfaron->checkMdp($_POST['mdp'])) {
 		$_SESSION['SM_sso_user'] = $fanfaron;
-		echo "Tu es connecté.";
+		echo "Tu es connectÃ©.";
 	}
 	else {
 		echo "Erreur de connexion.";
