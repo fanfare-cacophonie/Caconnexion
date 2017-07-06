@@ -24,9 +24,6 @@ if (isset($_SESSION['SM_sso_user'])) {
 		$user['roles'] = 'REGISTERED';
 }
 
-// jsConnect doesn't seem to send the v parameter...
-$_GET['v'] = '2';
-
 // Generate the jsConnect string.
 // This should be true unless you are testing.
 // You can also use a hash name like md5, sha1 etc which must be the name as the connection settings in Vanilla.

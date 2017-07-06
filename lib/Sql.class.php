@@ -43,7 +43,7 @@ class Sql {
 
 		$error = $req->errorInfo();
 		if ($error[1] != 0)
-			throw new Exception(error[2]);
+			throw new Exception($error[2]);
 
 		return $req->fetchAll();
 	}
@@ -64,7 +64,7 @@ class Sql {
 
 		$error = $req->errorInfo();
 		if ($error[1] != 0)
-			throw new Exception(error[2]);
+			throw new Exception($error[2]);
 	}
 
 	public function insert($table, $values) {
@@ -83,7 +83,7 @@ class Sql {
 
 		$error = $req->errorInfo();
 		if ($error[1] != 0)
-			throw new Exception(error[2]);
+			throw new Exception($error[2]);
 
 		return $this->id = $this->bdd()->lastInsertId();
 	}
