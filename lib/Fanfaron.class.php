@@ -10,6 +10,7 @@ class Fanfaron {
 	private $status;
 	private $generation;
 	private $droits;
+	private $tel;
 	
 	public function __construct($infos = array()) {
 		$this->id = isset($infos['id']) ? $infos['id'] : -1;
@@ -21,6 +22,7 @@ class Fanfaron {
 		$this->status = isset($infos['status']) ? $infos['status'] : Status::_1A;
 		$this->generation = isset($infos['generation']) ? $infos['generation'] : -1;
 		$this->droits = isset($infos['droits']) ? $infos['droits'] : Droits::Standard;
+		$this->tel = isset($infos['tel']) ? $infos['tel'] : '';
 	}
 	
 	public static function getFanfarons($crits = array()) {
@@ -55,7 +57,12 @@ class Fanfaron {
 			'id' => $this->id,
 			'surnom' => $this->surnom,
 			'email' => $this->email,
-			'droits' => $this->droits
+			'instru' => $this->instru,
+			'instru2' => $this->instru2,
+			'status' => $this->status,
+			'generation' => $this->generation,
+			'droits' => $this->droits,
+			'tel' => $this->tel
 		);
 	}
 	
@@ -68,8 +75,23 @@ class Fanfaron {
 			'instru2' => $this->instru2,
 			'status' => $this->status,
 			'generation' => $this->generation,
-			'droits' => $this->droits
+			'droits' => $this->droits,
+			'tel' => $this->tel
 		);
+	}
+
+	public function set($infos) {
+		if (!is_array($infos) || empty($infos))
+			return;
+
+		$this->surnom = isset($infos['surnom']) ? $infos['surnom'] : $this->surnom;
+		$this->email = isset($infos['email']) ? $infos['email'] : $this->email;
+		$this->instru = isset($infos['instru']) ? $infos['instru'] : $this->instru;
+		$this->instru2 = isset($infos['instru2']) ? $infos['instru2'] : $this->instru2;
+		$this->status = isset($infos['status']) ? $infos['status'] : $this->status;
+		$this->generation = isset($infos['generation']) ? $infos['generation'] : $this->generation;
+		$this->droits = isset($infos['droits']) ? $infos['droits'] : $this->droits;
+		$this->tel = isset($infos['tel']) ? $infos['tel'] : $this->tel;
 	}
 	
 	public function save() {
