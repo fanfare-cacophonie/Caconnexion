@@ -37,7 +37,7 @@ class Fanfaron {
 	}
 	
 	public static function getFanfaron($crits = array()) {
-		$fanfarons = getFanfarons($crits);
+		$fanfarons = self::getFanfarons($crits);
 		if ($fanfarons == false)
 			return false;
 		else if (count($fanfarons) == 1)
