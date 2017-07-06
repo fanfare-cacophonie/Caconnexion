@@ -71,6 +71,10 @@ class Fanfaron {
 			Sql::getSql()->update('Fanfarons', $this->getData(), array('id' => $this->id));
 		}
 	}
+
+	public function checkPermission($perm) {
+		return $this->droits == $perm;
+	}
 }
 
 abstract class Droits {
