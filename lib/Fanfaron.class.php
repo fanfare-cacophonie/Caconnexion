@@ -46,8 +46,10 @@ class Fanfaron {
 	}
 	
 	public function checkMdp($mdp) {
-		$mdp = hash('sha256', $mdp);
-		if ($this->mdp == $mdp)
+		if ($this->mdp == hash('sha256', $mdp))
+			return true;
+		include 'lib/phpbb.php';
+		if (phpbb_check_hash($mdp, $this->mdp))
 			return true;
 		return false;
 	}
